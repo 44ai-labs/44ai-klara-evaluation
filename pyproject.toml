@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "44ai-klara-evaluation"
+version = "0.3.0"
+description = "WER/MER metrics and fairness-focused normalization for German medical ASR"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = ["jiwer", "pydantic"]
+
+[project.urls]
+Repository = "https://github.com/44ai-labs/44ai-klara-evaluation"
+
+# The wheel is the metric library. The harness runs from a clone (`make install`), which installs
+# its dependencies and makes both packages importable.
+[tool.hatch.build.targets.wheel]
+packages = ["src/klara_evaluation"]
+
+[tool.ruff]
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "RUF"]
